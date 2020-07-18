@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    background: #333333;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.slider{
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.slide{
+    /* Nota: absolute respecto a slider div */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Nota: opacity 0 = Negro */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.slide.current{
+    /* Nota: opacity 1 = Transparente */
+    opacity: 1;
+}
+
+/* Nota: "caja" de texto sobre imagen */
+.slide .content{
+    position: absolute;
+    bottom: 70px;
+    /* Nota: Desde .slide.current .content se cambia left a 0 y 
+            opacity, al agregar la class current */
+    left: -600px;
+    opacity: 0;
+    width: 600px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #333333;
+    padding: 1.3rem;
+}
+
+.slide .content h1{
+    margin-bottom: 0.8rem;
+}
+
+/* Nota: Muestra contenido de "caja" de texto sobre imagen. 
+        Hace el efecto de aparecer lentamente de izq a derecha */
+.slide.current .content{
+    opacity: 0.88;
+    transform: translateX(600px);
+
+    /* Nota: Toma 0.3s en iniciar la transición
+        sintaxis:
+            - transition-property: The transition-property CSS property sets the CSS properties to which a transition effect should be applied.
+                Referencia:
+                https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property
+            - transition-duration:  sets the length of time a transition animation should take to complete
+                Referencia:
+                https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration
+            - transition-timing-function:sets how intermediate values are calculated for CSS properties being affected by a transition effect.
+                Referencia:
+                https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
+            - transition-delay: specifies the duration to wait before starting a property's transition effect when its value changes.
+                Referencia:
+                https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay */
+    transition: all 1.5s ease-in-out 0.3s;
+}
+
+.buttons button#next{
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    border-radius: 50%;
+}
+
+.buttons button#prev{
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+}
+
+.buttons button{
+    border: 2px solid #fff;
+    background: rgba(255, 127, 80, 0.6);
+    color: #ffffff;
+    padding: .7rem;
+    cursor: pointer;
+    /* Nota: Elimna el borde negro que aparece al momento de hacer click */
+    outline: none;
+}
+
+.buttons button:hover{
+    background: rgba(255, 127, 80, 1);
+}
+
+
+@media(max-width: 500px){
+    .slide .content {
+        bottom: -300px;
+        left:0;
+        width:100%;
+    }
+
+    .slide.current .content {
+        transform: translateY(-300px);
+    }
+}
+
+
+
+
+/* Nota: Background images */
+.slide:first-child{
+    background: url('./images/01_IMG_7358.JPG') no-repeat center center/cover;
+}
+
+.slide:nth-child(2){
+    background: url('./images/02_IMG_7487.JPG') no-repeat center top/cover;
+}
+
+.slide:nth-child(3){
+    background: url('./images/03_IMG_7768.JPG') no-repeat center top/cover;
+}
+
+.slide:nth-child(4){
+    background: url('./images/04_IMG_7937.JPG') no-repeat center top/cover;
+}
+.slide:nth-child(5){
+    background: url('./images/05_IMG_7952.JPG') no-repeat center top/cover;
+}
+
+.slide:nth-child(6){
+    background: url('./images/06_IMG_4698.JPG') no-repeat center top/cover;
+}
