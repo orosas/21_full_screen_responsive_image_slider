@@ -44,6 +44,8 @@ const prevSlide = () => {
         slides[slides.length - 1].classList.add('current');
     }
 
+    // Nota: la arrow function se ejecutará de manera inmediata
+            // ya que no se especifica tiempo DelayNode, para setTimeout
     setTimeout(() => current.classList.remove('current'));
 };
 
